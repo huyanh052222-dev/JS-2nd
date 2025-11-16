@@ -16,7 +16,7 @@
 
         }
         .random-pick{
-            width: 350px;
+            width: 450px;
             height: 120px;
             text-align: center;
             align-content: center;
@@ -54,21 +54,33 @@
     </div>
 
     <script>
-        const doAn = ["Bún Bò", "Hủ Tiếu", "Cơm Gà", "Cơm Tấm", "Phở", "Bánh Mì"];
+        const doAn = [
+            "Phở Bò", "Bún Chả", "Bún Bò Huế", "Mì Quảng", "Hủ Tiếu Nam Vang",
+            "Bánh Canh Cua", "Miến Gà", "Bún Riêu Cua", "Lẩu Thái", "Mì Trộn Khô","Cơm Tấm Sườn Bì Chả", "Cơm Gà Xối Mỡ", "Cơm Chiên Hải Sản", "Cơm rang dưa bò", "Cơm Văn Phòng (Thịt Kho)",
+            "Cơm Trắng & Canh Cua", "Cơm rang thập cẩm", "Cơm Đùi Gà", "Cơm gà xối mỡ", "Cơm chay","Bún Đậu Mắm Tôm", "Bún Giò Heo", "Phở Gà", "Bún Cá", "Miến Lươn",
+            "Bún Mọc", "Bún Sứa", "Bún Thang", "Miến ngan", "Bún ốc","Bánh Mì Kẹp Thịt", "Bánh Xèo", "Gỏi Cuốn Tôm Thịt", "Bánh Giò", "Bánh Bột Lọc",
+            "Bánh cuốn nhân thịt", "Nem nướng cuốn", "Bánh tét", "Bánh Khọt", "Bánh Canh Giò Heo","Phở Xào Bò", "Mì Xào Giòn", "Nui Xào Bò", "Cá Chiên Xù", "Rau Muống Xào Tỏi",
+            "Thịt ba chỉ rang cháy cạnh", "Trứng rán thịt", "Mực xào", "Đậu phụ Tứ Xuyên", "Cá sốt cà chua","Kimchi Jjigae", "Kimbap", "Tokbokki", "Mì Ramen", "Sushi/Sashimi",
+            "Cơm trộn Bibimbap", "Gà rán Hàn Quốc", "Udon", "Canh rong biển", "Bánh gạo cay","Pizza", "Hamburger", "Pasta (Mì Ý)", "Salad Trộn", "Bít Tết (Steak)",
+            "Gà Rán KFC/Lotteria", "Bánh mì sandwich", "Khoai Tây Chiên", "Soup kem bí đỏ", "Cá hồi nướng","Bánh mì phượng Hội An", "Cao lầu Hội An", "Bún Quậy Phú Quốc", "Cháo Lòng", "Bún mắm",
+            "Bún kèn", "Bánh đa cua", "Phá lấu", "Bún măng vịt", "Món lẩu mắm","Xôi Xéo", "Xôi Ngô", "Bánh bao chay", "Cháo Trắng Muối Vừng", "Bún riêu chay",
+            "Miến xào chay", "Cà ri chay", "Gỏi chay", "Rau củ luộc", "Súp nấm","Bánh tráng trộn", "Bánh khoai lang", "Bánh chuối", "Trái cây dầm", "Sữa chua nếp cẩm",
+            "Khoai lang luộc", "Bắp luộc", "Bánh flan", "Kem", "Chè đậu đen"
+        ];
         function Active(){
-            function ChonMon() {
+            function getRandomFood() {
                 const MangDoAn = doAn.length; // Lay co bao nhieu mon an
                 const randomDoAn = Math.floor(Math.random() * MangDoAn);
                 return doAn[randomDoAn];
             }
     
     
-            const MonAnCuaBan = ChonMon();
+            const MonAnCuaBan = getRandomFood();
             // alert("Mon An cua Ban: " + MonAnCuaBan);
             document.body.innerHTML =   
             `
             <div class = "random-pick">
-                <button type="button" onclick="Active()">Click me bro</button>
+                <button type="button" onclick="Active()">Gợi ý món khác!</button>
                 <div class = "picked">Món ăn của bạn: <span>${MonAnCuaBan}</span></div>
             </div>
             `
