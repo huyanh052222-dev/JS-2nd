@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0 auto;
+            height: 100vh;
+            width: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgb(15, 15, 15);
+
+        }
+        .random-pick{
+            width: 350px;
+            height: 120px;
+            text-align: center;
+            align-content: center;
+            background-color: white;
+            border-radius: 10px;
+            button{
+                width: 80%;
+                height: 40%;
+                margin-bottom: 20px;
+                border: 0;
+                background-color: rgb(108, 108, 108);
+                color: white;
+                border-radius: 10px;
+                font-size: 20px;
+                transition: all 0.4s ease;
+            }
+            button:hover{
+                transform: scale(1.05);
+            }
+            
+            .picked{
+                background-color: white;
+                font-size: 20px;
+                span{
+                    color: rgb(14, 163, 14);
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="random-pick">
+        <button type="button" onclick="Active()">Click me bro</button>
+        <div class = "picked">Click nút để Random món ăn! </div>
+    </div>
+
+    <script>
+        const doAn = ["Bún Bò", "Hủ Tiếu", "Cơm Gà", "Cơm Tấm", "Phở", "Bánh Mì"];
+        function Active(){
+            function ChonMon() {
+                const MangDoAn = doAn.length; // Lay co bao nhieu mon an
+                const randomDoAn = Math.floor(Math.random() * MangDoAn);
+                return doAn[randomDoAn];
+            }
+    
+    
+            const MonAnCuaBan = ChonMon();
+            // alert("Mon An cua Ban: " + MonAnCuaBan);
+            document.body.innerHTML =   
+            `
+            <div class = "random-pick">
+                <button type="button" onclick="Active()">Click me bro</button>
+                <div class = "picked">Món ăn của bạn: <span>${MonAnCuaBan}</span></div>
+            </div>
+            `
+        }
+
+    </script>
+</body>
+</html>

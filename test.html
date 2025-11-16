@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Lunch Picker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        #suggestion {
+            font-size: 1.5em;
+            color: #e94e77;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        button {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🍽️ Trưa nay ăn gì? </h1>
+        <p id="suggestion">...</p>
+        <button id="randomizeButton">Gợi ý món khác</button>
+    </div>
+
+    <script>
+        // Yêu cầu 1: Tạo array gồm tối thiểu 5 món ăn
+        const foods = ["Bún bò", "Cơm tấm", "Gà rán", "Mì cay", "Phở", "Bánh mì", "Sushi"];
+
+        // Yêu cầu 2: Viết hàm getRandomFood() trả về một món ngẫu nhiên
+        function getRandomFood() {
+            // Lấy độ dài của mảng
+            const arrayLength = foods.length;
+            
+            // 1. Sinh số ngẫu nhiên từ 0 (bao gồm) đến 1 (không bao gồm)
+            // Math.random()
+            
+            // 2. Nhân với độ dài mảng để có số ngẫu nhiên từ 0 đến foods.length (không bao gồm)
+            // Math.random() * arrayLength 
+            
+            // 3. Dùng Math.floor() để làm tròn xuống, đảm bảo ta có một số nguyên làm chỉ mục (index) hợp lệ.
+            const randomIndex = Math.floor(Math.random() * arrayLength);
+            
+            // Trả về phần tử tại chỉ mục ngẫu nhiên đó
+            return foods[randomIndex];
+        }
+
+        // Hàm để cập nhật hiển thị món ăn lên HTML
+        function displayRandomFood() {
+            // Lấy món ăn ngẫu nhiên
+            const selectedFood = getRandomFood();
+            
+            // Lấy phần tử HTML có id="suggestion"
+            const suggestionElement = document.getElementById('suggestion');
+            
+            // Yêu cầu 3: Hiển thị kết quả lên HTML
+            suggestionElement.innerHTML = `Hôm nay bạn nên ăn: <strong>${selectedFood}</strong>`;
+        }
+
+        // Yêu cầu 3 (Khởi tạo): Khi người dùng mở trang, hiển thị món ăn lần đầu
+        document.addEventListener('DOMContentLoaded', () => {
+            displayRandomFood();
+            
+            // Bonus: Thêm sự kiện cho nút "Gợi ý món khác"
+            const randomizeButton = document.getElementById('randomizeButton');
+            randomizeButton.addEventListener('click', displayRandomFood);
+        });
+    </script>
+
+</body>
+</html>
